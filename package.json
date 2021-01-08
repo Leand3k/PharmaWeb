@@ -1,0 +1,19 @@
+{
+  "name": "proyectofinaltendencias",
+  "version": "1.0.0",
+  "description": "Quick project of web development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leand3k/proyectoFinalTendencias.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leand3k/proyectoFinalTendencias/issues"
+  },
+  "homepage": "https://github.com/Leand3k/proyectoFinalTendencias#readme"
+}
