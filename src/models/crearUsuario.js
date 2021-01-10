@@ -1,4 +1,4 @@
-var db = require("../server");
+var db = require("../server.js");
 
 var Usuario = function Usuario(usuario) {
   this.Contraseña = usuario.Contraseña;
@@ -10,5 +10,22 @@ var Usuario = function Usuario(usuario) {
   this.Nombre = usuario.Nombre;
   this.NumeroTelefono = usuario.NumeroTelefono;
 };
+
+Usuario.GetUserById = (id, result) => {
+  const sql = `SELECT * FROM Usuario WHERE IdUsuario = ${id}`
+  db.query(sql, (err, res) => {
+    if(err) {
+      console.log(err);
+      result(err, null);
+    }
+    else if (res.length){
+      console.log("Usuario encontrado: ", res[0]);
+      result(null, res[0]);
+    }
+    else{
+      result({ kind: "not_found" }, null);
+    }
+  });
+}
 
 module.exports = Usuario;
