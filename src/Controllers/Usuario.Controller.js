@@ -1,3 +1,4 @@
+const Usuario = require("../models/crearUsuario");
 const usuarioModel = require("../models/crearUsuario");
 var db = require("../server");
 
@@ -15,6 +16,32 @@ var db = require("../server");
 // }
 
 // module.exports = {getUserById}
+
+exports.Crear = (req, res) => {
+  if (!req.params) {
+    res.status(400).send({
+      message: "El contenido no puede estar vacio!",
+    });
+  }
+  const nuevoUsuario = new Usuario({
+    Correo: req.params.Correo,
+    Contraseña: req.params.Contraseña,
+    Nombre: req.params.Nombre,
+    Direccion: req.params.Direccion,
+    NumeroTelefonico: req.params.NumeroTelefonico,
+    Apellido: req.params.Apellido,
+    Cedula: req.params.Cedula,
+    FechaNacimiento: req.params.FechaNacimiento,
+  });
+  Usuario.Crear(nuevoUsuario, (err, res) => {
+    if (err){
+      console.log(err);
+    } else{
+      console.log("ok!");
+    }
+  });
+
+}
 
 exports.getAllUsuario = (req, res) => {
   usuarioModel.getAllUsuario((err, Usuario) => {

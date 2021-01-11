@@ -1,3 +1,5 @@
+const { request } = require("express");
+const connection = require("../server");
 const db = require("../server");
 
 var Usuario = function Usuario(usuario) {
@@ -30,6 +32,34 @@ var Usuario = function Usuario(usuario) {
 //     }
 //   });
 // }
+
+Usuario.Crear = (nuevoUsuario, result) => {
+  
+  // nuevoUsuario.Correo = "a";
+  // nuevoUsuario.Contraseña = "0";
+  // nuevoUsuario.Nombre = "0";
+  // nuevoUsuario.Direccion = "a";
+  // nuevoUsuario.NumeroTelefono = "0";
+  // nuevoUsuario.Apellido = "lopez";
+  // nuevoUsuario.Cedula = "0";
+  nuevoUsuario.FechaNacimiento = Date.now();
+
+  connection.query(`CALL AgregarUsuario(?,?,?,?,?,?,?,?)`, [
+  nuevoUsuario.Correo,
+  nuevoUsuario.Contraseña,
+  nuevoUsuario.Nombre,
+  nuevoUsuario.Direccion,
+  nuevoUsuario.NumeroTelefono,
+  nuevoUsuario.Apellido,
+  nuevoUsuario.Cedula,
+  nuevoUsuario.FechaNacimiento], (err, res) => {
+    if (err) {
+      result("err:", err);
+    } else {
+      result("results:", res);
+    }
+  });
+}
 
 Usuario.getAllUsuario = (result) => {
   const sql = `SELECT * FROM Usuario`;
