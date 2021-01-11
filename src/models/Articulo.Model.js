@@ -1,23 +1,21 @@
 const db = require("../server");
 
-const Articulo = function(articulo) {
-    this.Cantidad = articulo.Cantidad;
-    this.IdArticulo = articulo.IdArticulo;
-    this.IdTipoArticulo = articulo.IdTipoArticulo;
-    this.Nombre = articulo.Nombre;
-    this.Precio = articulo.Precio;
+const Articulo = function(cantidad, idTipo, nombre, precio) {
+    this.Cantidad = cantidad;
+    this.IdTipoArticulo = idTipo;
+    this.Nombre = nombre;
+    this.Precio = precio;
 }
 
 Articulo.create = (newArticulo, result) => {
-    db.query("INSERT INTO Articulo SET ?"), newArticulo, (err, res) => {
-        if(err) {
+    let query = "call AgregarArticulo("+ newArticulo.Cantidad + "," + newArticulo.IdTipoArticulo + ",'" + newArticulo.Nombre + "'," + newArticulo.Precio + ");";
+    db.query(query, true, (err, res) => {
+        if(err) {   
             console.log("error: ", err);
             result(err, null);
             return;
         }
-
-        console.log("Articulo creado: ", {id: res.insertId, ...newArticulo});
-        result(null,{id:res.insertId, ...newArticulo});
-    };    
+        console.log("Articulo creado exitosamente");
+    });    
 }
 module.exports = Articulo;
