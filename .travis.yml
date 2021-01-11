@@ -1,12 +1,16 @@
 language: node_js
 node_js:
   - 12
+
+# SCRIPTS RO RUN
 script:
   - echo '*********Build Starts*********'
   - echo 'Installing Dependencies'
   - npm install
   - echo 'Running test'
   - npm test
+
+# ONLY APPLY TO THIS BRANCH
 branches:
   only:
     - main
