@@ -2,18 +2,18 @@ const { request } = require("express");
 const connection = require("../server");
 const db = require("../server");
 
-var Usuario = function Usuario(usuario) {
-  this.Contraseña = usuario.Contraseña;
-  this.Correo = usuario.Correo;
-  this.Direccion = usuario.Direccion;
-  this.FechaRegistro = new Date();
-  this.IdTipoUsuario = usuario.IdTipoUsuario;
-  this.IdUsuario = usuario.IdUsuario;
-  this.Nombre = usuario.Nombre;
-  this.NumeroTelefono = usuario.NumeroTelefono;
-  this.Apellido = usuario.Apellido;
-  this.Cedula = usuario.Cedula;
-  this.FechaNacimiento = usuario.FechaNacimiento;
+var Usuario = function(ucorreo, ucontraseña, udireccion, ufecharegistro, uidusuario, unombre,
+   unumerotelefono, uapellido, ucedula, ufechanacimiento) {
+  this.Correo = ucorreo;
+  this.Contraseña = ucontraseña;
+  this.Direccion = udireccion;
+  this.FechaRegistro = ufecharegistro;
+  this.IdUsuario = uidusuario;
+  this.Nombre = unombre;
+  this.NumeroTelefono = unumerotelefono;
+  this.Apellido = uapellido;
+  this.Cedula = ucedula;
+  this.FechaNacimiento = ufechanacimiento;
 };
 
 // Usuario.GetUserById = (id, result) => {
@@ -36,7 +36,7 @@ var Usuario = function Usuario(usuario) {
 Usuario.Crear = (nuevoUsuario, result) => {
   
   // nuevoUsuario.Correo = "a";
-  // nuevoUsuario.Contraseña = "0";
+  //nuevoUsuario.Contraseña = "0";
   // nuevoUsuario.Nombre = "0";
   // nuevoUsuario.Direccion = "a";
   // nuevoUsuario.NumeroTelefono = "0";
@@ -44,7 +44,7 @@ Usuario.Crear = (nuevoUsuario, result) => {
   // nuevoUsuario.Cedula = "0";
   nuevoUsuario.FechaNacimiento = Date.now();
 
-  connection.query(`CALL AgregarUsuario(?,?,?,?,?,?,?,?)`, [
+  connection.query("call AgregarUsuario(?,?,?,?,?,?,?,?)", [
   nuevoUsuario.Correo,
   nuevoUsuario.Contraseña,
   nuevoUsuario.Nombre,
