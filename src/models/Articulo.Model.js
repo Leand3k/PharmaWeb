@@ -31,7 +31,18 @@ Articulo.get = (result) => {
             result(null, res);
         }
 
-    })
+    });
 }
 
+Articulo.delete = (id, result) => { 
+    let query = "call farmaciaDB.EliminarArticulo(" + id + ");";
+    db.query(query, true, (err, res)=>{
+        if(err){
+            console.log("Error while deleting the item");
+            result(null, err);
+        }else{
+            result(null, res);
+        }
+    });
+}
 module.exports = Articulo;
