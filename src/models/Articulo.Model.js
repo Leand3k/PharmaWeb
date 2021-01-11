@@ -7,6 +7,7 @@ const Articulo = function(cantidad, idTipo, nombre, precio) {
     this.Precio = precio;
 }
 
+
 Articulo.create = (newArticulo, result) => {
     let query = "call AgregarArticulo("+ newArticulo.Cantidad + "," + newArticulo.IdTipoArticulo + ",'" + newArticulo.Nombre + "'," + newArticulo.Precio + ");";
     db.query(query, true, (err, res) => {
@@ -18,4 +19,19 @@ Articulo.create = (newArticulo, result) => {
         console.log("Articulo creado exitosamente");
     });    
 }
+
+
+Articulo.get = (result) => {
+    db.query('SELECT * FROM Articulo', (err, res)=>{
+        if(err){
+            console.log("Error while fetching all items", err);
+            result(null, err);
+        }else{
+            console.log('Employees fetched succesfully');
+            result(null, res);
+        }
+
+    })
+}
+
 module.exports = Articulo;

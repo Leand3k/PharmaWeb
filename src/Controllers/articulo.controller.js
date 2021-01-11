@@ -1,5 +1,6 @@
 const Articulo = require("../models/Articulo.Model");
 
+// Agregar nuevo artículo
 exports.create = (req, res) => {
     //Validate request
     if (!req.body) {
@@ -20,8 +21,13 @@ exports.create = (req, res) => {
     else res.send(data);
    });
   };
-/*const getArticulos = (req, res) => {
-    console.log('prueba');
+
+// Obtener todos los artículos en existencia
+exports.getItems = (req, res) => {
+  Articulo.get((err, items)=>{
+    if(err)
+    res.send(err);
+    console.log('Articulos', items);
+    res.send(items)
+  })
 }
-*/
-//module.exports = {getArticulos};
