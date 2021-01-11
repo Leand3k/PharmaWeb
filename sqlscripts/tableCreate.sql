@@ -57,4 +57,22 @@ USE farmaciaDB;
 -- );
 
 
+-- DROP TABLE UsuarioFarmaceutico; 
 
+-- DROP TABLE UsuarioCliente; 
+
+-- ALTER TABLE Usuario
+-- 	ADD Apellido nvarchar(100) NOT NULL,
+--     ADD Cedula char(11) NOT NULL,
+--     ADD FechaNacimiento Date NOT NULL
+-- 	
+
+-- CREATE TABLE Farmacia(
+--     IdFarmacia INT NOT NULL,
+--     NombreLocal NVARCHAR(100) NOT NULL,
+--     Direccion NVARCHAR(100) NOT NULL,
+--     Nombre nvarchar(100) NOT NULL,
+--     Correo nvarchar(100) NOT NULL,
+--     Telefono char(10) NOT NULL,
+--     PRIMARY KEY (IdFarmacia)
+-- );

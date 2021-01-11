@@ -9,6 +9,9 @@ var Usuario = function Usuario(usuario) {
   this.IdUsuario = usuario.IdUsuario;
   this.Nombre = usuario.Nombre;
   this.NumeroTelefono = usuario.NumeroTelefono;
+  this.Apellido = usuario.Apellido;
+  this.Cedula = usuario.Cedula;
+  this.FechaNacimiento = usuario.FechaNacimiento;
 };
 
 // Usuario.GetUserById = (id, result) => {
