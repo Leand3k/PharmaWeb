@@ -6,5 +6,7 @@ const articuloController = require('../Controllers/articulo.controller');
 
 //router.get("/", articuloController.getArticulos);
 router.post("/", articuloController.create);
+router.get("/get-all", articuloController.getItems);
+router.delete("/delete", articuloController.delete);
 
 module.exports = router;
