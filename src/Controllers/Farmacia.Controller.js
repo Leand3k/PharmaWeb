@@ -1,4 +1,4 @@
-const Farmacia = require("../models/crearFarmacia");
+const Farmacia = require("../models/Farmacia.Model");
 var db = require("../server");
 
 // exports.CrearFarmacia= (req, res) => {
@@ -19,15 +19,26 @@ exports.AgregarFarmacia = (req, res) => {
         });
     }
    
-    console.log('req data', req.body);
-    const farmacia = new Farmacia(req.body.Correo, req.body.Direccion, req.body.Nombre, req.body.NombreLocal, req.body.Telefono);
+console.log('req data', req.body);
+const farmacia = new Farmacia(req.body.Correo, req.body.Direccion, req.body.Nombre, req.body.NombreLocal, req.body.Telefono);
 
-    Farmacia.CrearFarmacia(farmacia, (err, data) => {
-        if(err)
-         res.status(500).send({
-            message:
-            err.message || "Ocurrio un error al crear una farmacia."
-        });
-        else res.send(data);
+Farmacia.CrearFarmacia(farmacia, (err, data) => {
+    if(err)
+    res.status(500).send({
+        message:
+        err.message || "Ocurrio un error al crear una farmacia."
+    });
+    else res.send(data);
     }); 
 };
+
+
+exports.getFarmacia = (req, res) => {
+    Farmacia.get((err, farm) => {
+        if(err)
+        res.send(err);
+        console.log('Farmacia', farm);
+        res.send(farm)
+        //res.json({succes: true, message: 'Farmacias extraidas exitosamente'});
+    })
+}

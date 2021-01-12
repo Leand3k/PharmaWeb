@@ -20,4 +20,16 @@ var Farmacia = function (correo, direccion, nombre, nombreLocal, telefono) {
       console.log("se creo la farmacia");
     })
   }
+
+  Farmacia.get = (result) => {
+    db.query('SELECT * FROM Farmacia', (err, res) =>{
+      if(err){
+        console.log("error while getting the stores", err);
+        result(null, err);
+      }else{
+        console.log('Farmacia fletched succesfully');
+        result(null, res);
+      }
+      })
+  }
   module.exports = Farmacia;
