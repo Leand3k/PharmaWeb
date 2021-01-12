@@ -1,5 +1,7 @@
 const Articulo = require("../models/Articulo.Model");
 
+
+// Agregar nuevo artículo
 exports.create = (req, res) => {
     //Validate request
     if (!req.body) {
@@ -18,10 +20,26 @@ exports.create = (req, res) => {
         err.message || "Ocurrio un Error al crear un Articulo."
     });
     else res.send(data);
+    res.send({success: true, message: 'Articulo agregado exitosamente'});
    });
   };
-/*const getArticulos = (req, res) => {
-    console.log('prueba');
+
+// Obtener todos los artículos en existencia
+exports.getItems = (req, res) => {
+  Articulo.get((err, items)=>{
+    if(err)
+    res.send(err);
+    console.log('Articulos', items);
+    res.send(items)
+    res.json({success: true, message: 'Articulo extraídos correctamente'});
+  })
 }
-*/
-//module.exports = {getArticulos};
+
+
+exports.delete=(req, res) => {
+  Articulo.delete(req.body.IdArticulo, (err, item) =>{
+    if(err)
+    res.send(err);
+    res.send({success: true, message: 'Articulo eliminado exitosamente'});
+  });
+}
