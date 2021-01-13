@@ -2,8 +2,18 @@ const { request } = require("express");
 const connection = require("../server");
 const db = require("../server");
 
-var Usuario = function (ucorreo, ucontraseña, udireccion, ufecharegistro, uidusuario, unombre,
-  unumerotelefono, uapellido, ucedula, ufechanacimiento) {
+var Usuario = function (
+  ucorreo,
+  ucontraseña,
+  udireccion,
+  ufecharegistro,
+  uidusuario,
+  unombre,
+  unumerotelefono,
+  uapellido,
+  ucedula,
+  ufechanacimiento
+) {
   this.Correo = ucorreo;
   this.Contraseña = ucontraseña;
   this.Direccion = udireccion;
@@ -16,25 +26,7 @@ var Usuario = function (ucorreo, ucontraseña, udireccion, ufecharegistro, uidus
   this.FechaNacimiento = ufechanacimiento;
 };
 
-// Usuario.GetUserById = (id, result) => {
-//   const sql = `SELECT * FROM Usuario WHERE IdUsuario = ${id}`
-//   db.query(sql, (err, res) => {
-//     if(err) {
-//       console.log(err);
-//       result(err, null);
-//     }
-//     else if (res.length){
-//       console.log("Usuario encontrado: ", res[0]);
-//       result(null, res[0]);
-//     }
-//     else{
-//       result({ kind: "not_found" }, null);
-//     }
-//   });
-// }
-
 Usuario.Crear = (newUser, result) => {
-
   // newUser.Correo = `a`;
   // newUser.Contraseña = `0`;
   // newUser.Nombre = `0`;
@@ -53,7 +45,7 @@ Usuario.Crear = (newUser, result) => {
     }
     console.log("Usuario creado exitosamente");
   });
-}
+};
 
 Usuario.getAllUsuario = (result) => {
   const sql = `SELECT * FROM Usuario;`;
