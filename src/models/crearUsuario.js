@@ -63,3 +63,5 @@ Usuario.getAllUsuario = (result) => {
 };
 
 module.exports = Usuario;
+
+//test
