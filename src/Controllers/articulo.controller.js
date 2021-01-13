@@ -31,7 +31,7 @@ exports.getItems = (req, res) => {
     res.send(err);
     console.log('Articulos', items);
     res.send(items)
-    res.json({success: true, message: 'Articulo extraídos correctamente'});
+    //res.json({success: true, message: 'Articulo extraídos correctamente'});
   })
 }
 
