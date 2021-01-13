@@ -2,8 +2,8 @@ const { request } = require("express");
 const connection = require("../server");
 const db = require("../server");
 
-var Usuario = function(ucorreo, ucontraseña, udireccion, ufecharegistro, uidusuario, unombre,
-   unumerotelefono, uapellido, ucedula, ufechanacimiento) {
+var Usuario = function (ucorreo, ucontraseña, udireccion, ufecharegistro, uidusuario, unombre,
+  unumerotelefono, uapellido, ucedula, ufechanacimiento) {
   this.Correo = ucorreo;
   this.Contraseña = ucontraseña;
   this.Direccion = udireccion;
@@ -33,36 +33,30 @@ var Usuario = function(ucorreo, ucontraseña, udireccion, ufecharegistro, uidusu
 //   });
 // }
 
-Usuario.Crear = (nuevoUsuario, result) => {
-  
-  // nuevoUsuario.Correo = "a";
-  //nuevoUsuario.Contraseña = "0";
-  // nuevoUsuario.Nombre = "0";
-  // nuevoUsuario.Direccion = "a";
-  // nuevoUsuario.NumeroTelefono = "0";
-  // nuevoUsuario.Apellido = "lopez";
-  // nuevoUsuario.Cedula = "0";
-  nuevoUsuario.FechaNacimiento = Date.now();
+Usuario.Crear = (newUser, result) => {
 
-  connection.query("call AgregarUsuario(?,?,?,?,?,?,?,?)", [
-  nuevoUsuario.Correo,
-  nuevoUsuario.Contraseña,
-  nuevoUsuario.Nombre,
-  nuevoUsuario.Direccion,
-  nuevoUsuario.NumeroTelefono,
-  nuevoUsuario.Apellido,
-  nuevoUsuario.Cedula,
-  nuevoUsuario.FechaNacimiento], (err, res) => {
+  // newUser.Correo = `a`;
+  // newUser.Contraseña = `0`;
+  // newUser.Nombre = `0`;
+  // newUser.Direccion = `a`;
+  // newUser.NumeroTelefono = `0`;
+  // newUser.Apellido = `lopez`;
+  // newUser.Cedula = `0`;
+  newUser.FechaNacimiento = Date.now();
+
+  const sp = `call AgregarUsuario("${newUser.Correo}", "${newUser.Contraseña}", "${newUser.Nombre}", "${newUser.Direccion}", "${newUser.NumeroTelefono}", "${newUser.Apellido}", "${newUser.Cedula}", "${newUser.FechaNacimiento}");`;
+  connection.query(sp, true, (err, res) => {
     if (err) {
-      result("err:", err);
-    } else {
-      result("results:", res);
+      console.log("error: ", err);
+      result(err, null);
+      return;
     }
+    console.log("Usuario creado exitosamente");
   });
 }
 
 Usuario.getAllUsuario = (result) => {
-  const sql = `SELECT * FROM Usuario`;
+  const sql = `SELECT * FROM Usuario;`;
 
   db.query(sql, (err, res) => {
     if (err) {
