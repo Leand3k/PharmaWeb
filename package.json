@@ -4,7 +4,7 @@
   "description": "Quick project of web development.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './src/tests/testChaiHTTP.js'"
+    "test": "mocha './src/tests/testChaiHTTP.js' --exit"
   },
   "repository": {
     "type": "git",
