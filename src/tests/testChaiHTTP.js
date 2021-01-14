@@ -19,3 +19,15 @@ describe('get all articulos: ',()=>{
     });
     });
    });
+
+   describe('get all farmacia: ',()=>{
+    it('should get all farmacia', (done) => {
+    chai.request(url)
+    .get('/farmacia/get-all')
+    .end( function(err,res){
+    console.log(res.body);
+    expect(res).to.have.status(200);
+    done();
+    });
+    });
+   });
