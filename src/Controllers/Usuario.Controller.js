@@ -28,7 +28,7 @@ exports.Crear = (req, res) => {
     req.body.Contraseña,
     req.body.Nombre,
     req.body.Direccion,
-    req.body.NumeroTelefonico,
+    req.body.NumeroTelefono,
     req.body.Apellido,
     req.body.Cedula,
     req.body.FechaNacimiento
@@ -37,7 +37,7 @@ exports.Crear = (req, res) => {
     if (err){
       res.status(500).send({
         message:
-           err.message || "Ocurrio un Error al crear un Articulo."
+           err.message || "Ocurrio un Error al crear el usuario."
        });
        console.log(err);
     } else {
