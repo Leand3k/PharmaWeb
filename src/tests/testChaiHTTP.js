@@ -31,3 +31,16 @@ describe('get all articulos: ',()=>{
     });
     });
    });
+
+   describe('get all usuarios: ',()=>{
+    it('should get all usuarios', (done) => {
+    chai.request(url)
+    .get('/usuario/')
+    .end( function(err,res){
+    console.log(res.body);
+    expect(res).to.have.status(200);
+    done();
+    });
+    });
+   });
+
