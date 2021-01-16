@@ -47,7 +47,18 @@ const url= 'http://localhost:3000';
 /*
 * Test the POST articulo route
 */
-
+describe('Insert a country: ',()=>{
+   it('should insert a country', (done) => {
+   chai.request(url)
+   .post('/articulo/1')
+   .send({Cantidad: 4, IdTipoArticulo: 1, Nombre: "Coco", Precio: 10.05})
+   .end( function(err,res){
+   console.log(res.body);
+   expect(res).to.have.status(404);
+   done();
+   });
+   });
+  });
 
   
   
@@ -59,11 +70,10 @@ describe('delete the articulo with id 1: ',()=>{
    it('should delete the articulo with id 1', (done) => {
    chai.request(url)
       .delete('/articulo/delete')
-      .send({IdArticulo: 25})
+      .send({IdArticulo: 20})
       .end( function(err,res){
          expect(res).to.have.status(200);
          done();
       });
    });
   });
-  
