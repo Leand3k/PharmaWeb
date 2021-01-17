@@ -20,7 +20,7 @@ exports.AgregarFarmacia = (req, res) => {
     }
    
 console.log('req data', req.body);
-const farmacia = new Farmacia(req.body.Correo, req.body.Direccion, req.body.Nombre, req.body.NombreLocal, req.body.Telefono);
+const farmacia = new Farmacia(req.body.Correo, req.body.Direccion, req.body.Nombre, req.body.NombreLocal, req.body.Telefono, req.body.Contraseña);
 
 Farmacia.CrearFarmacia(farmacia, (err, data) => {
     if(err)

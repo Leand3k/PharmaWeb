@@ -1,15 +1,16 @@
 const db = require("../server");
-var Farmacia = function (correo, direccion, nombre, nombreLocal, telefono) {
-    this.Correo = correo; 
+var Farmacia = function (correo, direccion, nombre, nombreLocal, telefono, contraseña) {
+    this.NombreLocal = nombreLocal 
     this.Direccion = direccion;
     this.Nombre = nombre;
-    this.NombreLocal = nombreLocal;
+    this.Correo = correo;
     this.Telefono = telefono;
+    this.Contraseña = contraseña;
 
   };
 
   Farmacia.CrearFarmacia = (newfarmacia,result) =>{
-    let sql = "call AgregarFarmacia('" + newfarmacia.Correo + "','" + newfarmacia.Direccion + "','" + newfarmacia.Nombre + "','" + newfarmacia.NombreLocal + "','" + newfarmacia.Telefono + "');";
+    let sql = "call AgregarFarmacia('" + newfarmacia.NombreLocal + "','" + newfarmacia.Direccion + "','" + newfarmacia.Nombre + "','" + newfarmacia.Correo + "','" + newfarmacia.Telefono + "','" + newfarmacia.Contraseña + "');";
 
     db.query(sql, true, (err, res) => {
       if(err){

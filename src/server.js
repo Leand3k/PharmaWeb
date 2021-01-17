@@ -26,6 +26,8 @@ connection.connect(function (err) {
   console.log("Connected to database.");
 });
 
+
+
 // const pool = mysql.createPool(connection);
 // module.exports = pool;
 
