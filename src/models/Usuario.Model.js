@@ -5,36 +5,24 @@ const db = require("../server");
 var Usuario = function (
   ucorreo,
   ucontraseña,
-  udireccion,
-  ufecharegistro,
-  uidusuario,
   unombre,
+  udireccion,
   unumerotelefono,
   uapellido,
   ucedula,
   ufechanacimiento
 ) {
-  this.IdUsuario = uidusuario;
   this.Correo = ucorreo;
   this.Contraseña = ucontraseña;
   this.Nombre = unombre;
   this.Direccion = udireccion;
   this.NumeroTelefono = unumerotelefono;
-  this.FechaRegistro = ufecharegistro;
   this.Apellido = uapellido;
   this.Cedula = ucedula;
   this.FechaNacimiento = ufechanacimiento;
 };
 
 Usuario.Crear = (newUser, result) => {
-  // newUser.Correo = `a`;
-  // newUser.Contraseña = `0`;
-  // newUser.Nombre = `0`;
-  // newUser.Direccion = `a`;
-  // newUser.NumeroTelefono = `0`;
-  // newUser.Apellido = `lopez`;
-  // newUser.Cedula = `0`;
-  // newUser.FechaRegistro = Date.now();
 
   const sp = `call AgregarUsuario("${newUser.Correo}", "${newUser.Contraseña}", "${newUser.Nombre}", "${newUser.Direccion}", "${newUser.NumeroTelefono}", "${newUser.Apellido}", "${newUser.Cedula}", "${newUser.FechaNacimiento}");`;
   connection.query(sp, true, (err, res) => {

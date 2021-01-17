@@ -14,6 +14,7 @@ const connection = mysql.createConnection({
   password: process.env.RDS_PASSWORD,
   database: process.env.RDS_DATABASE,
   port: process.env.RDS_PORT,
+  timezone: process.env.RDS_TIMEZONE
 });
 
 connection.connect(function (err) {

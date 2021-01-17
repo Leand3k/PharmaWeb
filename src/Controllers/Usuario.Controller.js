@@ -1,5 +1,5 @@
-const Usuario = require("../models/crearUsuario");
-const usuarioModel = require("../models/crearUsuario");
+const Usuario = require("../models/Usuario.Model");
+const usuarioModel = require("../models/Usuario.Model");
 var db = require("../server");
 
 // const getUserById = (id, result) => {
