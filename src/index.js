@@ -23,7 +23,7 @@ app.use("/articulo", articuloRoutes);
 app.use("/usuario", usuarioRoutes);
 app.use("/farmacia", farmaciaRoutes);
 app.listen(process.env.PORT || 3000, () =>
-  console.log(`Server running on port ${port}`)
+  console.log(`Server running on port ${process.env.PORT || 3000}`)
 );
 
 module.exports = app;
