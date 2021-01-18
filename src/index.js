@@ -2,7 +2,10 @@ var db = require("../src/server");
 const express = require("express");
 const app = express();
 const port = process.env.RDS_PORT;
+const cors = require("cors");
 const bodyParser = require("body-parser");
+
+app.use(cors());
 
 //routes
 const articuloRoutes = require("./Routes/articulo.routes");
