@@ -22,6 +22,8 @@ app.get("/", (req, res) => {
 app.use("/articulo", articuloRoutes);
 app.use("/usuario", usuarioRoutes);
 app.use("/farmacia", farmaciaRoutes);
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(process.env.PORT || 3000, () =>
+  console.log(`Server running on port ${port}`)
+);
 
 module.exports = app;
